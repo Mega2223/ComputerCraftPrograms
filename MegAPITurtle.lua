@@ -102,7 +102,7 @@ function pushForward()
 	while not turtle.forward() do
 		while not turtle.up() do
 			acacac = getDirection()
-			turnToDirection(inverseDirection(acacac)
+			turnToDirection(inverseDirection(acacac))
 			pushForward()
 			turnToDirection(acacac)
 		end
