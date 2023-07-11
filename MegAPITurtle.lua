@@ -113,6 +113,7 @@ function turnToDirection(toDir)
 		local lef = getDirectionLeft(dir)
 		if dir == lef then turtle.turnLeft() currentDirection = getDirectionLeft(currentDirection)
 		else turtle.turnRight() currentDirection = getDirectionRight(currentDirection) end
+		dir = getDirection()
 	end
 end
 
