@@ -42,7 +42,7 @@ function clearSnow(sX,sZ,eX,eZ)
 		dirX = inverseDirection(dirX)
 		turnToDirection(dirX)
 		toR = not toR
-		print("Var toEnd = " .. toR)
+		print(toR)
 		if not toR then cEX = sX else cEX = eX end
 	end
 end
