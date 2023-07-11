@@ -18,6 +18,7 @@ require ("MAPI.MegAPI")
 require ("MAPI.MegAPITurtle")
 
 function clearSnow(sX,sZ,eX,eZ)
+	print("Inicializando processo de limpeza, indo para " .. sX .. " : " .. sZ)
 	walkTo(sX,sZ)
 	dirX, dirZ = getDirectionAxis(sX,sZ,eX,eZ)
 	turnToDirection(dirX)
