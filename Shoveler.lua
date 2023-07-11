@@ -27,8 +27,8 @@ function clearSnow(sX,sZ,eX,eZ)
 	toR = true
 	while z ~= eZ do
 		print("Z " .. z .. " -> " .. eZ)
-		while not x ~= cEX do
-			print("X " .. x .. " -> " .. eX)
+		while x ~= cEX do
+			print("X " .. x .. " -> " .. cEX)
 			clearForward()
 			pushForward()
 			updateData()
