@@ -132,14 +132,14 @@ function walkTo (toX, toZ)
 end
 
 function pushForward()
-	while not moveForward() do
-		while not moveUp() do
-			acacac = getDirection()
-			turnToDirection(inverseDirection(acacac))
-			pushForward()
-			turnToDirection(acacac)
-		end
-	end
+	--while not moveForward() do
+		--while not moveUp() do
+		--	acacac = getDirection()
+		--	turnToDirection(inverseDirection(acacac))
+		--	pushForward()
+		--	turnToDirection(acacac)
+		--end
+	--end
 	while not turtle.detectDown() do
 		moveDown()
 	end
