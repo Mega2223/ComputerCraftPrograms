@@ -22,19 +22,22 @@ function clearSnow(sX,sZ,eX,eZ)
 	dirX, dirZ = getDirectionAxis(sX,sZ,eX,eZ)
 	turnToDirection(dirX)
 	print("Virando para" .. directionString(dirX))
-	local xC, yC, sZ = getCoords()
-	while not zC == zX do
-		while not xC == eX do
+	
+	cEX = eX
+	toR = true
+	while not z == eZ do
+		while not x == cEX do
 			clearForward()
+			pushForward()
 			updateData()
 		end
 		turnToDirection(dirZ)
 		clearForward()
+		pushForward()
 		dirX = inverseDirection(dirX)
 		turnToDirection(dirX)
-		local b = eX
-		eX = xC
-		xC = b
+		toR = not toR
+		if not toR then cEX = sX else ceX = eX end
 	end
 end
 
@@ -85,4 +88,4 @@ print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent L
 print("Current direction: " .. directionString(getDirection()))
 
 clearSnow(-1013, 1257, -1015, 1254)
-walkTo(-1017,92,1259)
+--walkTo(-1017,92,1259)
