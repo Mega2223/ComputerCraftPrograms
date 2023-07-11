@@ -40,7 +40,7 @@ end
 
 function clearForward()
 	gotoGround()
-	local hasBlock, local data = turtle.inspect()
+	local hasBlock, data = turtle.inspect()
 	while hasBlock do
 		if(isClearable(data["name"])) then
 			turtle.dig()
