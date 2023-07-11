@@ -37,7 +37,7 @@ function clearSnow(sX,sZ,eX,eZ)
 		turnToDirection(dirZ)
 		clearForward()
 		pushForward()
-		print("dirX " .. directionString(dirX) .. " -> " directionString(inverseDirection(dirX)))
+		print("dirX " .. directionString(dirX) .. " -> " .. directionString(inverseDirection(dirX)))
 		dirX = inverseDirection(dirX)
 		turnToDirection(dirX)
 		toR = not toR
