@@ -11,3 +11,7 @@ function updateSoftware()
 	shell.run("wget " .. APIT .. " MegAPITurtle.lua")
 	
 end
+
+return {
+	updateSoftware = updateSoftware
+}
