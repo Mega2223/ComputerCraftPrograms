@@ -97,5 +97,5 @@ print("Software da turtle atualizado :)")
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)
 print("Current direction: " .. directionString(getDirection()))
 
-clearSnow(-1013, 1257, -1015, 1254)
+clearSnow(-10122,1253,-1017,1259)
 --walkTo(-1017,92,1259)
