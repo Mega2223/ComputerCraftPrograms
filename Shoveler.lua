@@ -84,6 +84,11 @@ currentGoal = -1
 
 if x == nil then print("Could not locate :(, turning off") os.shutdown() end
 
+updateSoftware()
+shell.run("delete startup.lua")
+shell.run("wget https://raw.githubusercontent.com/Mega2223/ComputerCraftPrograms/main/Shoveler.lua startup.lua")
+print("Software da turtle atualizado :)")
+
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)
 print("Current direction: " .. directionString(getDirection()))
 
