@@ -26,7 +26,7 @@ function clearSnow(sX,sZ,eX,eZ)
 	
 	cEX = eX
 	toR = true
-	while z ~= eZ do
+	while z ~= eZ or x ~= cEX do
 		print("Z " .. z .. " -> " .. eZ)
 		while x ~= cEX do
 			print("X " .. x .. " -> " .. cEX)
@@ -45,6 +45,7 @@ function clearSnow(sX,sZ,eX,eZ)
 		print(toR)
 		if not toR then cEX = sX else cEX = eX end
 	end
+	
 end
 
 function clearForward()
