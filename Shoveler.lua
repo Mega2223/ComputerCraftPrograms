@@ -21,12 +21,12 @@ function clearSnow(sX,sZ,eX,eZ)
 	walkTo(sX,sZ)
 	dirX, dirZ = getDirectionAxis(sX,sZ,eX,eZ)
 	turnToDirection(dirX)
-	print("Virando para" .. directionString(dirX))
+	print("Virando para " .. directionString(dirX))
 	
 	cEX = eX
 	toR = true
-	while not z == eZ do
-		while not x == cEX do
+	while z ~= eZ do
+		while not x ~= cEX do
 			clearForward()
 			pushForward()
 			updateData()
