@@ -26,7 +26,9 @@ function clearSnow(sX,sZ,eX,eZ)
 	cEX = eX
 	toR = true
 	while z ~= eZ do
+		print("Z " .. z .. " -> " .. eZ)
 		while not x ~= cEX do
+			print("X " .. x .. " -> " .. eX)
 			clearForward()
 			pushForward()
 			updateData()
@@ -48,7 +50,7 @@ function clearForward()
 		if(isClearable(data["name"])) then
 			turtle.dig()
 		end
-		pushAbove()
+		pushAbove(SHOVEL_HAND)
 		hasBlock, data = turtle.inspect()
 		
 	end

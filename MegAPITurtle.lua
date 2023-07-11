@@ -166,12 +166,12 @@ function gotoGround()
 	end
 end
 
-function pushBelow()
-	while not down() do digDown(SHOVEL_HAND) end
+function pushBelow(toolHand)
+	while not down() do digDown(toolHand) end
 end
 
 function pushAbove()
-	while not up() do digUp(SHOVEL_HAND) end
+	while not up() do digUp(toolHand) end
 end
 --North = -Z
 --East = +X
