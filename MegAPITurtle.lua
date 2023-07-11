@@ -114,7 +114,7 @@ end
 
 function walkTo (toX, toZ)
 	while x < toX do
-		turnToDirection(DIR_EAST)
+		turnToDirection(DIR_WEST)
 		pushForward()
 	end
 	while x > toX do
