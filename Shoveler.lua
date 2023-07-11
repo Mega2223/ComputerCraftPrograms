@@ -14,7 +14,8 @@ SHOVEL_HAND = "right"
 BROADCAST_TO = 2224
 BROADCAST_LISTEN = 2225
 
-require MegAPITurtle
+require ("MAPI.MegAPI")
+require ("MAPI.MegAPITurtle")
 
 function clearSnow(sX,sZ,eX,eZ)
 	walkTo(sX,sZ)
@@ -81,3 +82,5 @@ currentGoal = -1
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)
 print("Current direction: " .. directionString(getDirection()))
 
+clearSnow(-947, 1297, -935, 1285)
+walkTo(-1017,92,1259)
