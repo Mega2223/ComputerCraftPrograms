@@ -79,7 +79,7 @@ x,y,z = gps.locate()
 currentDirection = nil
 currentGoal = -1
 
-if x == nil do print("Could not locate :(, turning off") os.shutdown() end
+if x == nil then print("Could not locate :(, turning off") os.shutdown() end
 
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)
 print("Current direction: " .. directionString(getDirection()))
