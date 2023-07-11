@@ -17,8 +17,41 @@ function getCoords()
 end
 
 function updateData()
-	x,y,z = gps.locate()
+	if gps.locate() ~= nil then 
+		x,y,z = gps.locate()
+	end
 end
+
+function moveForward()
+	r = turtle.forward()
+	if r and getDirection == DIR_NORTH then
+		z = z - 1
+	end
+	if r and getDirection == DIR_SOUTH then
+		z = z + 1
+	end
+	if r and getDirection == DIR_EAST then
+		x = x + 1
+	end
+	if r and getDirection == DIR_WEST then
+		x = x - 1
+	end
+	return r
+end
+
+function moveUp()
+	r = turtle.up()
+	if r then y = y + 1 end
+	return r
+end
+
+function moveDown()
+	r = turtle.down()
+	if r then y = y - 1 end
+	return r
+end
+
+
 
 function directionString(dir)
 	if dir == DIR_NORTH then return "north" end
@@ -33,9 +66,9 @@ function getDirection()
 		local cX = x
 		local cY = y
 		local cZ = z
-		could = turtle.forward()
+		could = moveForward()
 		if not could then
-			while not turtle.up() do
+			while not moveUp() do
 				turtle.digUp(SHOVEL_HAND)
 			end
 		else
@@ -99,8 +132,8 @@ function walkTo (toX, toZ)
 end
 
 function pushForward()
-	while not turtle.forward() do
-		while not turtle.up() do
+	while not moveForward() do
+		while not moveUp() do
 			acacac = getDirection()
 			turnToDirection(inverseDirection(acacac))
 			pushForward()
@@ -108,7 +141,7 @@ function pushForward()
 		end
 	end
 	while not turtle.detectDown() do
-		turtle.down()
+		moveDown()
 	end
 	updateData()
 end
@@ -128,7 +161,7 @@ end
 
 function gotoGround()
 	while not turtle.detectDown() do
-		turtle.down()
+		moveDown()
 	end
 end
 

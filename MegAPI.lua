@@ -9,9 +9,15 @@ function updateSoftware()
 	shell.run("cd MAPI")
 	shell.run("wget " .. API .. " MegAPI.lua")
 	shell.run("wget " .. APIT .. " MegAPITurtle.lua")
+	shell.run("cd /")
+	print("Todos os arquivos da MAPI estão seguros")
+end
+
+function getFiles()
 	
 end
 
+--table
 return {
 	updateSoftware = updateSoftware
 }

@@ -84,5 +84,5 @@ if x == nil then print("Could not locate :(, turning off") os.shutdown() end
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)
 print("Current direction: " .. directionString(getDirection()))
 
-clearSnow(-947, 1297, -935, 1285)
+clearSnow(-1013, 1257, -1015, 1254)
 walkTo(-1017,92,1259)
