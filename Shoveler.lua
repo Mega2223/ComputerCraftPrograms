@@ -75,7 +75,7 @@ function awaitBroadcast(channel)
 	return os.pullEvent("modem_message")
 end
 
-function getFunctionID()
+function getFunctionalID()
 	return "SN-"..computerID()
 end
 

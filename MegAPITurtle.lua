@@ -108,8 +108,12 @@ function getDirectionLeft(dir)
 end
 
 function turnToDirection(toDir)
-	getDirection()
-	while toDir ~= currentDirection do turtle.turnRight() currentDirection = getDirectionRight(currentDirection) end
+	local dir = getDirection()
+	while toDir ~= dir do
+		local lef = getDirectionLeft(dir)
+		if dir == lef then turtle.turnLeft() currentDirection = getDirectionLeft(currentDirection)
+		else turtle.turnRight() currentDirection = getDirectionRight(currentDirection) end
+	end
 end
 
 function walkTo (toX, toZ)
