@@ -31,15 +31,18 @@ function clearSnow(sX,sZ,eX,eZ)
 			print("X " .. x .. " -> " .. cEX)
 			clearForward()
 			pushForward()
-			updateData()
+			--updateData()
 		end
+		print("Virando para eixo z = " .. directionString(dirZ))
 		turnToDirection(dirZ)
 		clearForward()
 		pushForward()
+		print("dirX " .. directionString(dirX) .. " -> " directionString(inverseDirection(dirX)))
 		dirX = inverseDirection(dirX)
 		turnToDirection(dirX)
 		toR = not toR
-		if not toR then cEX = sX else ceX = eX end
+		print("Var toEnd = " .. toR)
+		if not toR then cEX = sX else cEX = eX end
 	end
 end
 

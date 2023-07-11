@@ -171,11 +171,11 @@ function gotoGround()
 end
 
 function pushBelow(toolHand)
-	while not down() do digDown(toolHand) end
+	while not moveDown() do digDown(toolHand) end
 end
 
 function pushAbove()
-	while not up() do digUp(toolHand) end
+	while not moveUp() do digUp(toolHand) end
 end
 --North = -Z
 --East = +X
