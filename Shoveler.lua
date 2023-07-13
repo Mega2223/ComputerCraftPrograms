@@ -34,6 +34,7 @@ function clearSnow(sX,sZ,eX,eZ)
 			pushForward()
 			--updateData()
 		end
+		if z = eZ and x = cEX do return true end
 		print("Virando para eixo z = " .. directionString(dirZ))
 		turnToDirection(dirZ)
 		clearForward()
@@ -43,7 +44,6 @@ function clearSnow(sX,sZ,eX,eZ)
 		turnToDirection(dirX)
 		toR = not toR
 		print(toR)
-		if x == eX and z == eZ then return true end
 		if not toR then cEX = sX else cEX = eX end
 	end
 	
