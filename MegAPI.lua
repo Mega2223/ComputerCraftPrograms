@@ -9,6 +9,10 @@ function updateSoftware()
 	shell.run("cd MAPI")
 	shell.run("wget " .. API .. " MegAPI.lua")
 	shell.run("wget " .. APIT .. " MegAPITurtle.lua")
+	
+	shell.run("mkdir Turtles")
+	shell.run("cd Turtles")
+	shell.run("wget https://raw.githubusercontent.com/Mega2223/ComputerCraftPrograms/main/Turtles/Shoveler.lua Shoveler.lua")
 	shell.run("cd /")
 	print("Todos os arquivos da MAPI estão seguros")
 end
