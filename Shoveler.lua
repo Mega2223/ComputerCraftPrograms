@@ -27,7 +27,6 @@ function clearSnow(sX,sZ,eX,eZ)
 	cEX = eX
 	toR = true
 	while z ~= eZ or x ~= eX do
-		if x == eX and z == eZ then return true end
 		print("Z " .. z .. " -> " .. eZ)
 		while x ~= cEX do
 			print("X " .. x .. " -> " .. cEX)
@@ -44,6 +43,7 @@ function clearSnow(sX,sZ,eX,eZ)
 		turnToDirection(dirX)
 		toR = not toR
 		print(toR)
+		if x == eX and z == eZ then return true end
 		if not toR then cEX = sX else cEX = eX end
 	end
 	
