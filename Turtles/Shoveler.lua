@@ -14,8 +14,8 @@ SHOVEL_HAND = "right"
 BROADCAST_TO = 2224
 BROADCAST_LISTEN = 2225
 
-require ("MAPI.MegAPI")
-require ("MAPI.MegAPITurtle")
+require ("/.MAPI.MegAPI")
+require ("/.MAPI.MegAPITurtle")
 
 function clearSnow(sX,sZ,eX,eZ)
 	print("Inicializando processo de limpeza, indo para " .. sX .. " : " .. sZ)
@@ -85,10 +85,11 @@ function getFunctionalID()
 	return "SN-"..computerID()
 end
 
+--local instance variables
+currentGoal = -1
+currentDirection = nil
 --initialization
 x,y,z = gps.locate()
-currentDirection = nil
-currentGoal = -1
 
 if x == nil then print("Could not locate :(, turning off") os.shutdown() end
 
@@ -101,6 +102,3 @@ print("Software da turtle atualizado :)")
 
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)
 print("Current direction: " .. directionString(getDirection()))
-
-clearSnow(-1012,1253,-1017,1259)
---walkTo(-1017,92,1259)
