@@ -12,7 +12,6 @@ local n = math.floor(x*(2.0/5.0))
 current = window.create(mon,3,3,m-4,y-4)
 selector = window.create(mon,m+2,3,n-2,y-3)
 
-program
 programs = {require("Teste"),require("Teste2")}
 
 function updateSelector()
