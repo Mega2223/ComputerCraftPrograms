@@ -56,7 +56,7 @@ while true do
 	local event, a1, a2, a3 = os.pullEvent()
 	if event == 'monitor_touch' then
 		onMonitorTouch(event,a1,a2,a3)
-	elseif event == 'timer'
+	elseif event == then'timer'
 		updateStats()
 	end
 end
