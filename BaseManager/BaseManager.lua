@@ -6,8 +6,14 @@ mon.setBackgroundColor(colors.black)
 mon.clear()
 --o espaço horizontal deve ser 3/5, mas tira 2, 1 pra distância e outro pro quadrado
 --coordenada do meio só precisa de 1 de diferença
-current = window.create(mon,3,2,math.floor(x*(3.0/5.0))-2,y-3)
-selector = window.create(mon,math.floor(x*(3.0/5.0))+2,3,x-2,y-3)
+local m = math.floor(x*(3.0/5.0))
+local n = math.floor(x*(2.0/5.0))
+
+current = window.create(mon,3,3,m-4,y-4)
+selector = window.create(mon,m+2,3,n-2,y-3)
+
+program
+programs = {require("Teste"),require("Teste2")}
 
 function updateSelector()
 	term.redirect(mon)
@@ -19,24 +25,39 @@ end
 
 term.redirect(term.native())
 
-function onMonitorTouch(ev,side,x,y)
+function onMonitorTouch(ev,side,lX,lY)
 	term.redirect(selector)
-	print(x..":"..y)
+	
+	local tX, tY = window.getPosition()
+	tX = lX - tX
+	tY = lY - tY
+	
+	local i = 1
+	while programs[i] ~= nil do
+		if tY == i then
+			programs[i].draw()
+		end
+		i = i + 1
+	end
+	
 	term.redirect(term.native())
 end
 
 function updateStats()
-	term.redirect(selector)
-	print("stats")
+	term.redirect(current)
 	term.redirect(term.native())
 end
 
+function drawModule(index)
+	
+end
+
 while true do 
-	os.startTimer(0.1)
+	os.startTimer(0.2)
 	local event, a1, a2, a3 = os.pullEvent()
 	if event == 'monitor_touch' then
 		onMonitorTouch(event,a1,a2,a3)
-	else
+	elseif event == 'timer'
 		updateStats()
 	end
 end
