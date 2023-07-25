@@ -27,6 +27,24 @@ function splitString(str,s)
 	return tab;
 end
 
+function broadcastAndWait(channel, toBroadcast, waitTime, limit, modem)
+	modem.open(channel)
+	while true do
+		os.startTimer(waitTime)
+		local event, side, channel, replyChannel, message, distance = os.pullEvent()
+		if event == "modem_message" then
+			return event, side, channel, replyChannel, message, distance
+		end
+		if event == "timer" then
+			modem.transmit(channel,channel,toBroadcast)
+			limit = limit - 1
+		end
+		if limit = 0 then
+			return false
+		end
+	end
+end
+
 --table
 return {
 	updateSoftware = updateSoftware
