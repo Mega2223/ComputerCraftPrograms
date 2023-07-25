@@ -19,7 +19,8 @@ function updateSelector()
 	mon.clear()
 	mon.setBackgroundColor(colors.white)
 	paintutils.drawBox(2,2,math.floor(x*(3.0/5.0))-1,y-1)
-	paintutils.drawBox(math.floor(x*(3.0/5.0))+1,2,x-1,y-1)
+	paintutils.drawBox(math.floor(x*(3.0/5.0))+1,2,x-1,y-1
+	term.redirect()--parei aqui, falta desenhar os botões
 end
 
 term.redirect(term.native())
@@ -27,14 +28,14 @@ term.redirect(term.native())
 function onMonitorTouch(ev,side,lX,lY)
 	term.redirect(selector)
 	
-	local tX, tY = window.getPosition()
+	local tX, tY = selector.getPosition()
 	tX = lX - tX
 	tY = lY - tY
 	
 	local i = 1
 	while programs[i] ~= nil do
 		if tY == i then
-			programs[i].draw()
+			programs[i].draw(current)
 		end
 		i = i + 1
 	end
@@ -56,7 +57,8 @@ while true do
 	local event, a1, a2, a3 = os.pullEvent()
 	if event == 'monitor_touch' then
 		onMonitorTouch(event,a1,a2,a3)
-	elseif event == then'timer'
+	elseif event 'timer' == then
+		updateSelector()
 		updateStats()
 	end
 end

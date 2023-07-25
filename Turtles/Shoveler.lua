@@ -11,8 +11,7 @@ DIR_SOUTH = 1
 DIR_EAST = 2
 DIR_WEST = 3
 SHOVEL_HAND = "right"
-BROADCAST_TO = 2224
-BROADCAST_LISTEN = 2225
+BROADCAST= 2224
 
 require ("/.MAPI.MegAPI")
 require ("/.MAPI.MegAPITurtle")
@@ -64,26 +63,58 @@ end
 
 
 --AI related functions
-function getBestGoal()
-	if  turtle.getFuelLevel / turtle.getFuelLimit >= .25 then return GOAL_BASE end
-	return GOAL_SEARCH
+
+function getFunctionalID()
+	return "SN-"..computerID()
 end
 
 function isClearable(block)
 	return (block == "minecraft:snow" or block == "minecraft:snow_layer")
 end
 
-function requestTask(channel)
-	
+function interpretMessage(message)
+	spl = splitString(message,":")
+	if table.maxn(spl) < 2 then return false end
+
+	type = string.sub(spl[1],1,3)
+	order = splitString(spl[2],"=>")
+	if type == "SNC" and order[1] == getFunctionalID do
+		interpretOrder(order[1])
+		return true
+	end
+	return false
+end
+
+function interpretOrder(order)
+	ordtab = splitString(order,"->")
+	if ordtab[1] == "CLR" do
+		locs = splitString(order[2]," ")
+		local tbX = tonumber(locs[1])
+		local tbY = tonumber(locs[2])
+		local teX = tonumber(locs[3])
+		local teY = tonumber(locs[4])
+		clearSnow(tbX,tbY,teX,teY)
+	end
+	if ordtab[2] == "FFF" do
+		--todo
+		return true
+	end
+end
+
+function requestTask(channel, modem)
+	modem.open(channel)
+	local hasReceivedOrder = false
+	while not hasReceivedOrder do
+		local event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
+		hasReceivedOrder = interpretMessage(message)
+	end
 end
 
 function awaitBroadcast(channel)
 	return os.pullEvent("modem_message")
 end
 
-function getFunctionalID()
-	return "SN-"..computerID()
-end
+
 
 --local instance variables
 currentGoal = -1
@@ -91,12 +122,12 @@ currentDirection = nil
 --initialization
 x,y,z = gps.locate()
 
-if x == nil then print("Could not locate :(, turning off") os.shutdown() end
+if x == nil then print("Could not locate :(, turning off") os.sleep(10) os.reboot() end
 
 updateSoftware()
 shell.run("delete startup.lua")
 
---shell.run("wget https://raw.githubusercontent.com/Mega2223/ComputerCraftPrograms/main/Turles/Shoveler.lua startup.lua")
+shell.run("wget https://raw.githubusercontent.com/Mega2223/ComputerCraftPrograms/main/Turles/Shoveler.lua startup.lua")
 print("Software da turtle atualizado :)")
 
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)

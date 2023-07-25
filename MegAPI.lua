@@ -17,8 +17,12 @@ function updateSoftware()
 	print("Todos os arquivos da MAPI estão seguros")
 end
 
-function getFiles()
-	
+function splitString(str,s)
+	tab = {}
+	for str in string.gmatch(str, s) do
+		table.insert(s)
+	end
+	return tab;
 end
 
 --table
