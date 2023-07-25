@@ -103,11 +103,13 @@ end
 
 function requestTask(channel, modem)
 	modem.open(channel)
+	modem.transmit(channel, channel, getFunctionalID()..":RQ->"..tostring(turtle.getFuelLevel/turtle.getFuelLimit))
 	local hasReceivedOrder = false
 	while not hasReceivedOrder do
 		local event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
 		hasReceivedOrder = interpretMessage(message)
 	end
+	modem.close(channel)
 end
 
 function awaitBroadcast(channel)
