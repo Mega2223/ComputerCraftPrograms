@@ -1,4 +1,6 @@
 
+SNOW_CLEANER_COMM_CH = 2224
+
 function updateSoftware()
 	local API = "https://raw.githubusercontent.com/Mega2223/ComputerCraftPrograms/main/MegAPI.lua"
 	local APIT = "https://raw.githubusercontent.com/Mega2223/ComputerCraftPrograms/main/MegAPITurtle.lua"

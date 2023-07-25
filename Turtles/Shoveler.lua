@@ -78,7 +78,7 @@ function interpretMessage(message)
 
 	type = string.sub(spl[1],1,3)
 	order = splitString(spl[2],"=>")
-	if type == "SNC" and order[1] == getFunctionalID do
+	if type == "SNC" and order[1] == getFunctionalID then
 		interpretOrder(order[1])
 		return true
 	end
@@ -87,15 +87,16 @@ end
 
 function interpretOrder(order)
 	ordtab = splitString(order,"->")
-	if ordtab[1] == "CLR" do
+	if ordtab[1] == "CLR" then
 		locs = splitString(order[2]," ")
 		local tbX = tonumber(locs[1])
 		local tbY = tonumber(locs[2])
 		local teX = tonumber(locs[3])
 		local teY = tonumber(locs[4])
 		clearSnow(tbX,tbY,teX,teY)
+		return true
 	end
-	if ordtab[2] == "FFF" do
+	if ordtab[2] == "FFF" then
 		--todo
 		return true
 	end
@@ -119,7 +120,6 @@ end
 
 
 --local instance variables
-currentGoal = -1
 currentDirection = nil
 --initialization
 x,y,z = gps.locate()
@@ -134,3 +134,5 @@ print("Software da turtle atualizado :)")
 
 print("Hello world :)\nThis turtle was coded by MegaIndustries Inc.\n\nCurrent Loc: " .. x .. ", " .. y .. ", " .. z)
 print("Current direction: " .. directionString(getDirection()))
+
+while true do requestTask(SNOW_CLEANER_COMM_CH,peripheral.find("modem")) end
